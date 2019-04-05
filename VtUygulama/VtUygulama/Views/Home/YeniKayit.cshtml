@@ -1,0 +1,37 @@
+﻿@model VtUygulama.ViewModel.KayitModel
+@{
+    ViewBag.Title = "YeniKayit";
+}
+
+<h2>Yeni Kayit</h2>
+
+<div class="row">
+    <div class="col-md-4">
+        @using (Html.BeginForm("YeniKayit", "Home", FormMethod.Post))
+        {
+            @Html.HiddenFor(k => k.Id)
+            @Html.LabelFor(k => k.AdSoyad)<br />
+            @Html.TextBoxFor(k => k.AdSoyad, new { @class = "form-control" })
+            @Html.ValidationMessageFor(k => k.AdSoyad, null, new { @class = "text-danger" })<br />
+
+            @Html.LabelFor(k => k.Email)<br />
+            @Html.TextBoxFor(k => k.Email, new { @class = "form-control" })
+            @Html.ValidationMessageFor(k => k.Email, null, new { @class = "text-danger" })<br />
+
+            @Html.LabelFor(k => k.Yas)<br />
+            @Html.TextBoxFor(k => k.Yas, new { @class = "form-control" })
+            @Html.ValidationMessageFor(k => k.Yas, null, new { @class = "text-danger" })<br />
+
+            <br />
+
+            <input type="submit" value="Kaydet" class="btn btn-success" />
+
+            if (ViewBag.sonuc != null)
+            {
+                <div class="alert alert-success">@ViewBag.sonuc</div>
+            }
+
+
+        }
+    </div>
+</div>

@@ -1,0 +1,30 @@
+﻿@model IEnumerable<VtUygulama.Models.tbl_Kayitlar>
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Kayıtlar</h2>
+@Html.ActionLink("Yeni Kayıt", "YeniKayit", null, new { @class = "btn btn-primary" })
+<br /><br />
+<table class="table">
+    <tr>
+        <td>Kullanıcı Id</td>
+        <td>Adı Soyadı</td>
+        <td>E-mail</td>
+        <td>Yaş</td>
+        <td>Düzenle</td>
+        <td>Sil</td>
+    </tr>
+    @foreach (var kayit in Model)
+    {
+    <tr>
+        <td>@kayit.Id</td>
+        <td>@kayit.AdSoyad</td>
+        <td>@kayit.Email</td>
+        <td>@kayit.Yas</td>
+        <td>@Html.ActionLink("Düzenle", "KayitDuzenle", new { id = kayit.Id }, new { @class = "btn btn-warning" })</td>
+        <td>@Html.ActionLink("Sil", "KayitSil", new { id = kayit.Id }, new { @class = "btn btn-danger" })</td>
+    </tr>
+
+    }
+</table>
